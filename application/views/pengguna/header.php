@@ -17,16 +17,6 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/sbadmin/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
-    <script type="text/javascript" src="<?= base_url('assets/jqueryrealtime/'); ?>jquery.min.js">
-
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            setInterval(function() {
-                $('#cetaksensor').load('<?= base_url('kirimdata/index.php'); ?>');
-            }, 1000);
-        });
-    </script>
 
 </head>
 

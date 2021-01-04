@@ -11,9 +11,12 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		$data['tittle'] = 'My Dasbord';
+		$data['tittle'] = 'My Dasboard';
 		$data['pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' => $this->session->userdata('id_pengguna')])->row_array();
 		$data['nilai'] = $this->db->get('tb_monitoring')->row_array();
+
+		$data['script'] = 'script/admin';
+
 		$this->load->view('pengguna/header', $data);
 		$this->load->view('pengguna/sidebar', $data);
 		$this->load->view('pengguna/topbar', $data);
