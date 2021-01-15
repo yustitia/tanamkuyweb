@@ -6,12 +6,17 @@ class Admin extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+
+		if (!$this->session->userdata('id_pengguna')) {
+			redirect('login');
+		}
+
 		$this->load->model('m_data');
 	}
 
 	public function index()
 	{
-		$data['tittle'] = 'My Dasboard';
+		$data['tittle'] = 'My Dashboard';
 		$data['pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' => $this->session->userdata('id_pengguna')])->row_array();
 		$data['nilai'] = $this->db->get('tb_monitoring')->row_array();
 
@@ -47,7 +52,7 @@ class Admin extends CI_Controller
 	public function keluar()
 	{
 		$this->session->unset_userdata('id_pengguna');
-		$this->session->unset_userdata('role_data');
+		$this->session->unset_userdata('role_id');
 
 		$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
        jangan lupa datang lagi :)
